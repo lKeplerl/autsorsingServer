@@ -310,7 +310,7 @@ app.post("/tableAdd/:name", async (req, res) => {
     let { data, columnsName } = req.body;
 
     switch (name) {
-      case "Users":
+      case "User":
         for (let i = 0; i < columnsName.length; i++) {
 
           columnsName[i] = usersTranslate[columnsName[i]];
