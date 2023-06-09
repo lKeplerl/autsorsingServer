@@ -61,7 +61,7 @@ const price = [
 
 hbs.registerHelper("ifEquals", (arg1, arg2, options) => {
   if (arg2 === "primaryKey") {
-      return (arg1 === options.data.root.primaryKey) ? options.fn(this) : options.inverse(this);
+    return (arg1 === options.data.root.primaryKey) ? options.fn(this) : options.inverse(this);
   }
   return (arg1 === arg2) ? options.fn(this) : options.inverse(this);
 })
@@ -248,11 +248,11 @@ app.get("/tableColumns/:name", async (req, res) => {
       if (data[i]?.Image) {
         data[i].Image = "data:image/png;base64," + Buffer.from(data[i].Image).toString("base64")
       }
-      if (data[i]?.date) {
-        const date = new Date(data[i].date)
+      if (data[i]?.User_requestDate) {
+        
+        const date = new Date(data[i].User_requestDate)
         const formatted = new Intl.DateTimeFormat('en-US').format(date).split("/").reverse().join("-");
-        data[i].date = formatted;
-
+        data[i].User_requestDate = formatted;
       }
     }
 
@@ -288,7 +288,7 @@ app.get("/tableColumns/:name", async (req, res) => {
       default:
         break;
     }
-
+    
     const primaryKey = columns.find((colum) => { if (colum.COLUMN_KEY === 'PRI') { return colum } }).COLUMN_NAME
     // console.log(colum);
     res.render("table.hbs", {
@@ -322,7 +322,7 @@ app.post("/tableAdd/:name", async (req, res) => {
           columnsName[i] = serviceTranslitiion[columnsName[i]];
         }
         break;
-      case "Order":
+      case "Request":
         for (let i = 0; i < columnsName.length; i++) {
 
           columnsName[i] = orderTranslate[columnsName[i]];
@@ -378,6 +378,7 @@ app.post("/tableAdd/:name", async (req, res) => {
 
     pool.getConnection((err, connection) => {
       connection.query(query, { bufferValue }, (err, respond, fields) => {
+        console.log(err);
         if (!respond) {
           res.sendStatus(304);
 
@@ -415,7 +416,7 @@ app.post("/tableChangeData/:name", async (req, res) => {
           columnsName[i] = serviceTranslitiion[columnsName[i]];
         }
         break;
-      case "Order":
+      case "Request":
         field = orderTranslate[field];
 
         for (let i = 0; i < columnsName.length; i++) {
@@ -503,7 +504,7 @@ app.post("/tableDeleteData/:name", async (req, res) => {
         field = serviceTranslitiion[field];
 
         break;
-      case "Order":
+      case "Request":
         field = orderTranslate[field];
         break;
       case "Subservice":

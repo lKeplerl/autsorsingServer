@@ -21,7 +21,7 @@ const clickedElement = (e, columns) => {
 
 
     for (let i = 0; i < fields.length; i++) {
-        if (fields[i] === "Image") {
+        if (fields[i] === "Image" || fields[i] === "Изображение") {
             // console.log(e.children[i].firstChild.src);'
             imageFromClicked = e.children[i].firstChild.src
             // document.getElementById(fields[i]).files[0] = e.children[i].firstChild.src;
@@ -44,7 +44,7 @@ saveButton.addEventListener("click", async (e) => {
     const data = [];
 
     for (let i = 0; i < columnsName.length; i++) {
-        if (columnsName[i] === "Image") {
+        if (columnsName[i] === "Image" || columnsName[i] === "Изображение") {
 
             const file = document.getElementById(columnsName[i]).files[0];
 
@@ -96,7 +96,7 @@ changeButton.addEventListener("click", async (e) => {
     const data = [];
 
     for (let i = 0; i < columnsName.length; i++) {
-        if (columnsName[i] === "Image") {
+        if (columnsName[i] === "Image" || columnsName[i] === "Изображение") {
             const file = document.getElementById(columnsName[i]).files[0];
 
             console.log(file);
