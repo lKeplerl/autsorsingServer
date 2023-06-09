@@ -1,0 +1,81 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Панель администратора</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/table.css">
+</head>
+
+<body>
+  <main>
+    <div class="container">
+      <div class="main__inner">
+        <div class="main_output">
+          <ul id="columns">
+            {{#each columns as |column|}}
+            <li>{{@key}}</li>
+            {{/each}}
+          </ul>
+          {{#each data as |dat|}}
+          <ul class="dataElement" onclick="clickedElement(this,'{{search ../columns }}')">
+            {{#each ../columns as |column|}}
+            {{#ifEquals column "Image"}}
+            <li><img src="{{lookup dat (column)}}"></li>
+            {{else}}
+            <li style="word-break: break-all;">{{lookup dat (column)}}</li>
+            {{/ifEquals }}
+
+            {{/each}}
+          </ul>
+          {{/each}}
+        </div>
+        <div class="actions">
+          {{#each columnsDataType as |column|}}
+          {{#ifEquals column.COLUMN_NAME 'primaryKey'}}
+
+          <div class="actions_inner" style="visibility: hidden; position:absolute; left:0px; width:0px;">
+            <span class="inner_span">{{column.COLUMN_NAME}}</span>
+            <input type="text" id="{{column.COLUMN_NAME}}" onkeypress="return isNumberKey(event)">
+          </div>
+
+          {{else}}
+          {{#ifEquals column.COLUMN_NAME "Изображение"}}
+          <div for="file" class="btn_image" onclick="document.getElementById('{{column.COLUMN_NAME}}').click();">
+            <span class="inner_span">Выберите картинку</span>
+            <input type="file" id="{{column.COLUMN_NAME}}" style="display:none;" accept="image/*">
+          </div>
+          {{else}}
+          {{#ifEquals column.DATA_TYPE "int"}}
+          <div class="actions_inner">
+            <span class="inner_span">{{column.COLUMN_NAME}}</span>
+            <input type="text" id="{{column.COLUMN_NAME}}" onkeypress="return isNumberKey(event)">
+          </div>
+          {{else}}
+          <div class="actions_inner">
+            <span class="inner_span">{{column.COLUMN_NAME}}</span>
+            <input type="text" id="{{column.COLUMN_NAME}}">
+          </div>
+          {{/ifEquals}}
+
+          {{/ifEquals }}
+
+          {{/ifEquals}}
+          {{/each}}
+          <div class="actions_inner">
+            <button id="save" name="{{tableName}}/{{primaryKey}}">Сохранить</button>
+            <button id="change" name="{{tableName}}/{{primaryKey}}">Изменить</button>
+            <button id="delete" name="{{tableName}}/{{primaryKey}}">Удалить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../../js/table.js"></script>
+</body>
+
+</html>

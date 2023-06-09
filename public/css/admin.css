@@ -1,0 +1,141 @@
+:root {
+  --main-color: #000;
+  --second-color: #fff;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: Montserrat;
+}
+
+body::-webkit-scrollbar {
+  width: 20px;
+}
+
+body::-webkit-scrollbar-track {
+  background-clip: content-box;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #000;
+  border: 5px solid #fff;
+  border-top: 0px;
+  border-bottom: 0px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #757575;
+}
+
+body::-webkit-scrollbar-button {
+  background-color: #000;
+  border: 5px solid #fff;
+}
+
+body::-webkit-scrollbar-button:hover {
+  background-color: #757575;
+}
+
+.main_container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main_container h1 {
+  width: 100vw;
+  background: #000;
+  text-align: center;
+  color: #fff;
+  font-weight: 500;
+  font-size: calc(22px + 16 * (100vw / 1728));
+  line-height: calc(20px + 16 * (100vw / 1728));
+  letter-spacing: 0.03em;
+
+  padding: 40px 0;
+  margin-bottom: 30px;
+}
+
+.main_container h1::selection{
+  color: #000;
+  background: #fff;
+}
+
+.main_container h2 {
+  text-align: center;
+  color: #000;
+  font-weight: 400;
+  font-size: calc(14px + 6 * (100vw / 1728));
+  line-height: calc(13px + 10 * (100vw / 1728));
+  letter-spacing: 0.03em;
+
+  padding: 10px 0;
+  margin-bottom: 40px;
+}
+
+.main_container h2::selection{
+  color: #fff;
+  background: #000;
+}
+
+.main_container ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: calc(16px + 74 * (100vw / 1728));
+}
+
+.main_container ul li a {
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  color: #000;
+  font-weight: 400;
+  font-size: calc(16px + 16 * (100vw / 1728));
+  line-height: calc(12px + 12 * (100vw / 1728));
+  letter-spacing: 0.03em;
+
+  transition: 0.15s all linear;
+}
+
+.main_container ul li a::selection{
+  color: #fff;
+  background: #000;
+}
+
+.main_container ul li a:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background-color: #757575;
+  transition: width 0.4s;
+}
+
+.main_container ul li a:hover:after {
+  content: "";
+  width: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  background-color: #757575;
+  transition: width 0.4s;
+}
