@@ -55,7 +55,7 @@ img {
 }
 
 .main__inner {
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
   padding: 0 10px;
 
@@ -64,28 +64,10 @@ img {
   align-items: center;
 }
 
-/* .container h1 {
-  width: 100vw;
-  background: #000;
-  text-align: center;
-  color: #fff;
-  font-weight: 500;
-  font-size: calc(22px + 16 * (100vw / 1728));
-  line-height: calc(20px + 16 * (100vw / 1728));
-  letter-spacing: 0.03em;
-
-  padding: 40px 0;
-  margin-bottom: 40px;
-}
-
-.container h1::selection {
-  color: #000;
-  background: #fff;
-} */
-
 .main_output {
   width: 100%;
   margin-top: 80px;
+  margin-bottom: 320px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -95,15 +77,17 @@ img {
   display: grid;
   align-items: center;
   text-align: center;
-  grid-template-columns: repeat(6, 280px);
+  justify-content: space-around;
+  width: 100%;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fit, 280px);
   margin: 10px 0;
-
   border: 2px solid transparent;
 
   transition: 0.2s linear;
 }
 
-.main_output ul::selection{
+.main_output ul::selection {
   color: #fff;
   background: #000;
 }
@@ -122,18 +106,21 @@ img {
   letter-spacing: 0.03em;
 }
 
-.main_output ul li::selection{
+.main_output ul li::selection {
   color: #fff;
   background: #000;
 }
 
 #columns {
+  justify-content: space-around;
+
   border: 1px solid #757575;
   padding: 10px;
 }
 
 #columns li {
   text-decoration: none;
+  text-align: center;
   color: #000;
   font-weight: 500;
   font-size: calc(14px + 6 * (100vw / 1728));
@@ -142,12 +129,17 @@ img {
 }
 
 .actions {
-  margin-top: 40px;
-  margin-bottom: 80px;
+  padding-top: 20px;
+  padding-bottom: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 30px;
+
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background: #fff;
 }
 
 .actions_inner {
@@ -163,24 +155,26 @@ img {
   padding-bottom: 5px;
   font-weight: 400;
   font-size: calc(13px + 4 * (100vw / 1728));
+  text-align: center;
   line-height: 22px;
   letter-spacing: 0.03em;
   color: #000;
   border-bottom: 1px solid #000;
+  width: 300px;
 
   transition: .2s all linear;
 }
 
-.actions_inner input:hover{
+.actions_inner input:hover {
   margin-left: 15px;
 }
 
-.actions_inner input:focus{
-  padding: 5px;
+.actions_inner input:focus {
+  padding: 6px;
   border: 1px solid #000;
 }
 
-.actions_inner input::selection{
+.actions_inner input::selection {
   color: #fff;
   background: #000;
 }
@@ -193,9 +187,10 @@ img {
   font-weight: 400;
   font-size: calc(13px + 4 * (100vw / 1728));
   letter-spacing: 0.03em;
-  border: 1px solid var(--main-color);
+  border: 1px solid #000;
   background: transparent;
-  padding: 13px 25px;
+  padding: 15px 35px;
+  margin: 0 20px;
 
   transition: 0.2s all linear;
 }
@@ -213,7 +208,7 @@ img {
   letter-spacing: 0.03em;
 }
 
-.inner_span::selection{
+.inner_span::selection {
   color: #fff;
   background: #000;
 }
@@ -262,10 +257,6 @@ img {
 .dataElement {
   cursor: pointer;
 }
-
-/* .actions .actions_inner:first-child {
-    display: none;
-  } */
 
 .actions>div>span {
   cursor: pointer;
