@@ -57,9 +57,8 @@ body::-webkit-scrollbar-button:hover {
 
 .main_container h1 {
   width: 100vw;
-  background: #000;
   text-align: center;
-  color: #fff;
+  color: #000;
   font-weight: 500;
   font-size: calc(22px + 16 * (100vw / 1728));
   line-height: calc(20px + 16 * (100vw / 1728));
@@ -69,9 +68,9 @@ body::-webkit-scrollbar-button:hover {
   margin-bottom: 30px;
 }
 
-.main_container h1::selection{
-  color: #000;
-  background: #fff;
+.main_container h1::selection {
+  color: #fff;
+  background: #000;
 }
 
 .main_container h2 {
@@ -86,7 +85,7 @@ body::-webkit-scrollbar-button:hover {
   margin-bottom: 40px;
 }
 
-.main_container h2::selection{
+.main_container h2::selection {
   color: #fff;
   background: #000;
 }
@@ -107,15 +106,16 @@ body::-webkit-scrollbar-button:hover {
   font-size: calc(16px + 16 * (100vw / 1728));
   line-height: calc(12px + 12 * (100vw / 1728));
   letter-spacing: 0.03em;
+  margin: 0 20px;
 
   transition: 0.15s all linear;
 }
 
-.main_container ul li a::selection{
+.main_container ul li a::selection {
   color: #fff;
   background: #000;
 }
 
 .main_container ul li a:hover {
-color: #757575;
+  color: #757575;
 }
