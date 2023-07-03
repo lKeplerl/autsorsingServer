@@ -150,8 +150,8 @@ app.post("/leaveOrder", async (req, res) => {
 
     transoprter.sendMail(
       {
-        from: "Аутсорсинг бухуслуг<justimaginesmth@mail.ru>",
-        to: "justimaginesmth@mail.ru",
+        from: "Аутсорсинг бухуслуг<glebchickrylov@mail.ru>",
+        to: "glebchickrylov@mail.ru",
         subject: "Заявка на услугу",
         text: `Имя клиента: ${name}\nУслуга: ${services[0].Service_name}\nПочта клиента: ${email}\nДата отправления заявки: ${date}`,
       },
