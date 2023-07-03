@@ -150,14 +150,30 @@ app.post("/leaveOrder", async (req, res) => {
 
     const [services] = await promisePool.execute("SELECT * FROM `Service` WHERE ID = " + idService);
 
-    transoprter.sendMail(
-      {
-        from: "Аутсорсинг бухуслуг<glebchickrylov@mail.ru>",
-        to: "glebchickrylov@mail.ru",
-        subject: "Заявка на услугу",
-        text: `Имя клиента: ${name}\nУслуга: ${services[0].Service_name}\nПочта клиента: ${email}\nДата отправления заявки: ${date}`,
-      },
-    )
+    if(services[0].Service_name != null){
+
+      transoprter.sendMail(
+        {
+          from: "Аутсорсинг бухуслуг<glebchickrylov@mail.ru>",
+          to: "glebchickrylov@mail.ru",
+          subject: "Заявка на услугу",
+          text: `Имя клиента: ${name}\nУслуга: ${services[0].Service_name}\nПочта клиента: ${email}\nДата отправления заявки: ${date}`,
+        },
+      )
+
+    }
+    else{
+
+      transoprter.sendMail(
+        {
+          from: "Аутсорсинг бухуслуг<glebchickrylov@mail.ru>",
+          to: "glebchickrylov@mail.ru",
+          subject: "Заявка на услугу",
+          text: `Имя клиента: ${name}\nПочта клиента: ${email}\nДата отправления заявки: ${date}`,
+        },
+      )
+
+    }
 
     if (user.length > 0) {
       if (idService) {
