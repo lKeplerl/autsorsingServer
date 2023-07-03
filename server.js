@@ -150,30 +150,14 @@ app.post("/leaveOrder", async (req, res) => {
 
     const [services] = await promisePool.execute("SELECT * FROM `Service` WHERE ID = " + idService);
 
-    if(services[0].Service_name != null){
-
-      transoprter.sendMail(
-        {
-          from: "Аутсорсинг бухуслуг<glebchickrylov@mail.ru>",
-          to: "glebchickrylov@mail.ru",
-          subject: "Заявка на услугу",
-          text: `Имя клиента: ${name}\nУслуга: ${services[0].Service_name}\nПочта клиента: ${email}\nДата отправления заявки: ${date}`,
-        },
-      )
-
-    }
-    else{
-
-      transoprter.sendMail(
-        {
-          from: "Аутсорсинг бухуслуг<glebchickrylov@mail.ru>",
-          to: "glebchickrylov@mail.ru",
-          subject: "Заявка на услугу",
-          text: `Имя клиента: ${name}\nПочта клиента: ${email}\nДата отправления заявки: ${date}`,
-        },
-      )
-
-    }
+    transoprter.sendMail(
+      {
+        from: "Аутсорсинг бухуслуг<glebchickrylov@mail.ru>",
+        to: "glebchickrylov@mail.ru",
+        subject: "Заявка на услугу",
+        text: `Имя клиента: ${name}\nУслуга: ${services[0].Service_name}\nПочта клиента: ${email}\nДата отправления заявки: ${date}`,
+      },
+    )
 
     if (user.length > 0) {
       if (idService) {
@@ -267,7 +251,7 @@ app.get("/tableColumns/:name", async (req, res) => {
         data[i].Image = "data:image/png;base64," + Buffer.from(data[i].Image).toString("base64")
       }
       if (data[i]?.User_requestDate) {
-        
+
         const date = new Date(data[i].User_requestDate)
         const formatted = new Intl.DateTimeFormat('en-US').format(date).split("/").reverse().join("-");
         data[i].User_requestDate = formatted;
@@ -306,7 +290,7 @@ app.get("/tableColumns/:name", async (req, res) => {
       default:
         break;
     }
-    
+
     const primaryKey = columns.find((colum) => { if (colum.COLUMN_KEY === 'PRI') { return colum } }).COLUMN_NAME
     // console.log(colum);
     res.render("table.hbs", {
