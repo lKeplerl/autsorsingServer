@@ -19,8 +19,8 @@ let transoprter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: 'glebchickrylov@mail.ru',
-    pass: 'Q0zYTFXE9m4hiZRbi1dr',
+    user: 'buh-platforma@mail.ru',
+    pass: 'NiV8g9t7Rmr7q6zczh02',
     // user: 'justimaginesmth@mail.ru',
     // pass: 'wuN77vCgXWvZt2ww6cAh',
   },
@@ -152,8 +152,8 @@ app.post("/leaveOrder", async (req, res) => {
 
     transoprter.sendMail(
       {
-        from: "Аутсорсинг бухуслуг<glebchickrylov@mail.ru>",
-        to: "glebchickrylov@mail.ru",
+        from: "Аутсорсинг бухуслуг<buh-platforma@mail.ru>",
+        to: "buh-platforma@mail.ru",
         subject: "Заявка на услугу",
         text: `Имя клиента: ${name}\nУслуга: ${services[0].Service_name}\nПочта клиента: ${email}\nДата отправления заявки: ${date}`,
       },
