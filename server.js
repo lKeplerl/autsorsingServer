@@ -19,8 +19,10 @@ let transoprter = nodemailer.createTransport({
   port: 465,
   secure: true,
   auth: {
-    user: 'justimaginesmth@mail.ru',
-    pass: 'wuN77vCgXWvZt2ww6cAh',
+    user: 'glebchickrylov@mail.ru',
+    pass: 'Q0zYTFXE9m4hiZRbi1dr',
+    // user: 'justimaginesmth@mail.ru',
+    // pass: 'wuN77vCgXWvZt2ww6cAh',
   },
 });
 
